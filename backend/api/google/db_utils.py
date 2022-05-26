@@ -1,5 +1,12 @@
 from api.db import db
-from api.google.models import Table, History
+from api.google.models import History, Table
+
+def delete_data_in_db(delete: list):
+    if delete:
+        for line in delete:
+            table = Table.query.filter(Table.id == line['id']).first()
+            db.session.delete(table)
+            db.session.commit()
 
 def get_or_save_data_course(course_data: dict):
     history = History.query.filter(History.date == course_data['date']).first()
@@ -8,13 +15,6 @@ def get_or_save_data_course(course_data: dict):
         history = History(date=course_data['date'], price_usd=course_data['price_usd'])
         db.session.add(history)
         db.session.commit()
-
-def delete_data_in_db(delete: list):
-    if delete:
-        for line in delete:
-            table = Table.query.filter(Table.id == line['id']).first()
-            db.session.delete(table)
-            db.session.commit()
 
 def update_data_in_db(update: list):
     new_line = []

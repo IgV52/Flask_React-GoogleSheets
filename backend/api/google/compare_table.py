@@ -1,7 +1,8 @@
+from api.google.db_utils import delete_data_in_db
+
 import json
 import os
 import pandas
-from api.google.db_utils import delete_data_in_db
 
 basedir = os.path.join('google_table', 'table.json')
 os.makedirs('google_table', exist_ok=True)
@@ -14,15 +15,6 @@ def check_table(data):
         compare_file(data, read)
         return False
     return True
-
-def read_file():
-    with open(basedir,'r', encoding='utf-8') as f:
-        read = json.load(f)
-    return read
-
-def create_file(data):
-    with open(basedir,'w+', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
 
 def compare_file(data, read):
     df_new = pandas.json_normalize(data)
@@ -44,4 +36,14 @@ def compare_file(data, read):
             delete_data_in_db(deletes)
     #Создается новый обновленный файлик
     create_file(data)
+
+def create_file(data):
+    with open(basedir,'w+', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
+def read_file():
+    with open(basedir,'r', encoding='utf-8') as f:
+        read = json.load(f)
+    return read
+
     

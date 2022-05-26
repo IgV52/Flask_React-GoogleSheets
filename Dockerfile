@@ -10,5 +10,8 @@ COPY --from=build-step ./frontend/build ./frontend/build
 COPY ./backend ./backend
 RUN pip install -r ./backend/requirements.txt
 
-WORKDIR ./backend
 EXPOSE 5000
+WORKDIR ./backend
+
+CMD ["gunicorn", "-b", ":5000", "main:create_app()"]
+

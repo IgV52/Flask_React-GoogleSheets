@@ -9,11 +9,11 @@ function TableData(props) {
             <table>
                 <thead>
                     <tr>
-                    <th scope="col">№</th>
-                    <th scope="col">заказ №</th>
-                    <th scope="col">стоимость,$</th>
-                    <th scope="col">срок поставки</th>
-                    <th scope="col">стоимость в рублях</th>
+                    <th>№</th>
+                    <th>заказ №</th>
+                    <th>стоимость,$</th>
+                    <th>срок поставки</th>
+                    <th>стоимость в рублях</th>
                     </tr>
                 </thead>
                 <tbody>

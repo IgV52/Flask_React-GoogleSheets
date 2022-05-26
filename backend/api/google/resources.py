@@ -1,7 +1,7 @@
-from flask_restful import Resource
-from api.google.utils import convert_money, course_usd, read_table, create_dict
 from api.google.compare_table import check_table, create_file
 from api.google.db_utils import update_data_in_db
+from api.google.utils import convert_money, course_usd, create_dict, read_table
+from flask_restful import Resource
 from flask import jsonify
 
 class GoogleSheets(Resource):

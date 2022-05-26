@@ -1,6 +1,6 @@
-from flask import Flask
 from api.db import db
 from api.google.routes import api_bp
+from flask import Flask
 from flask_cors import CORS
 
 def create_app():

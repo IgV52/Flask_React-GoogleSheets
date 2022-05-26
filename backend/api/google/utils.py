@@ -1,28 +1,12 @@
-from cbrf.models import DailyCurrenciesRates
-from api.google.google_sheets import read_sheets
 from api.google.db_utils import get_or_save_data_course
+from api.google.google_sheets import read_sheets
+from cbrf.models import DailyCurrenciesRates
 from datetime import datetime
 
-def create_dict(table: list):
-    list_keys = table[0]
-    list_values = table[1:]
-    new_table = []
-    #Создание словаря по модели БД
-    if len(list_keys) == 5:
-        for dicts in table:
-            new_dicts = {}
-            new_dicts['id']=dicts['№']
-            new_dicts['number_order']=dicts['заказ №']
-            new_dicts['price_by_usd']=dicts['стоимость,$']
-            new_dicts['delivery_date']=dicts['срок поставки']
-            new_dicts['price_by_rub']=dicts['стоимость в руб']
-            new_table.append(new_dicts)
-    #Cоздание json из данных таблицы
-    else:
-        for values in list_values:
-            dict_data = dict(zip(list_keys, values))
-            new_table.append(dict_data)
-    return new_table
+def check_data_table(new_table: list, num_end: int):
+    if len(new_table) == num_end:
+        return False
+    return True
 
 def convert_money(table: list, course_data: dict):
     #Конвертация цены
@@ -51,6 +35,27 @@ def course_usd():
     get_or_save_data_course(data_course)
     return data_course
 
+def create_dict(table: list):
+    list_keys = table[0]
+    list_values = table[1:]
+    new_table = []
+    #Создание словаря по модели БД
+    if len(list_keys) == 5:
+        for dicts in table:
+            new_dicts = {}
+            new_dicts['id']=dicts['№']
+            new_dicts['number_order']=dicts['заказ №']
+            new_dicts['price_by_usd']=dicts['стоимость,$']
+            new_dicts['delivery_date']=dicts['срок поставки']
+            new_dicts['price_by_rub']=dicts['стоимость в руб']
+            new_table.append(new_dicts)
+    #Cоздание json из данных таблицы
+    else:
+        for values in list_values:
+            dict_data = dict(zip(list_keys, values))
+            new_table.append(dict_data)
+    return new_table
+
 def read_table(num_start: int, num_end: int):
     new_table = []
     #Читает таблицу до тех пор пока конечная точка
@@ -65,8 +70,3 @@ def read_table(num_start: int, num_end: int):
         num_start = 1 + num_end 
         #Шаг 50
         num_end += 50 
-    
-def check_data_table(new_table: list, num_end: int):
-    if len(new_table) == num_end:
-        return False
-    return True
