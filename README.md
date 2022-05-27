@@ -48,16 +48,6 @@ JSON_SORT_KEYS = False
 
 <br><b>Вернитесь в каталог Flask_React-GoogleSheets</b>
 
-<b>Откройте файлик docker-compose.yml</b>
-    <details>
-    <summary> Запуск Docker-compose напишите в консоли: </summary></b>
-```
-POSTGRES_DB: "{название вашей базы данных}"
-POSTGRES_USER: "{имя пользователя}"
-POSTGRES_PASSWORD: "{пароль}"
-```
-</details>
-
 ## <br><b>Запуск</b>
 
 <br><b>Вернитесь в каталог Flask_React-GoogleSheets</b>
