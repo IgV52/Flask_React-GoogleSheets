@@ -4,7 +4,7 @@ COPY ./frontend ./
 RUN yarn install
 RUN yarn build
 
-FROM python:3.10.4
+FROM python:3.10
 WORKDIR ./app
 COPY --from=build-step ./frontend/build ./frontend/build
 COPY ./backend ./backend

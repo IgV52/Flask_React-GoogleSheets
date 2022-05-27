@@ -18,7 +18,7 @@ function App() {
 
  useEffect(() => {
     setAppState({loading: true})
-    const apiUrl = 'http://localhost:5000/api/gs';
+    const apiUrl = '/api/gs';
 
     axios.get(apiUrl).then((resp) => {
       const allRows = resp.data;
