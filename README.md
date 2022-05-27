@@ -46,11 +46,9 @@ JSON_SORT_KEYS = False
 ```
 </details>
 
-<br><b>Вернитесь в каталог Flask_React-GoogleSheets</b>
-
 ## <br><b>Запуск</b>
 
-<br><b>Вернитесь в каталог Flask_React-GoogleSheets</b>
+<br><b>Зайдите в каталог Flask_React-GoogleSheets</b>
 
 ### <br><b>Откройте консоль</b>
 
