@@ -1,6 +1,15 @@
 from api.db import db
 from api.google.models import History, Table
 
+def db_read():
+    new_table = []
+    table = Table.query.order_by(Table.id).all()
+    for line in table:
+        tabs = [line.id, line.number_order, line.price_by_usd, line.delivery_date]
+        format_str = [str(i) for i in tabs]
+        new_table.append(format_str)
+    return new_table
+
 def delete_data_in_db(delete: list):
     if delete:
         for line in delete:
@@ -10,7 +19,7 @@ def delete_data_in_db(delete: list):
 
 def get_or_save_data_course(course_data: dict):
     history = History.query.filter(History.date == course_data['date']).first()
-    #Сохраняет если курс доллара если на текущую дату записи нету
+    #Сохраняет курс доллара если на текущую дату записи нету
     if not history:
         history = History(date=course_data['date'], price_usd=course_data['price_usd'])
         db.session.add(history)

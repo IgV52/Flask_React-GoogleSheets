@@ -25,6 +25,5 @@ def read_sheets(num_start: int,num_end: int):
         majorDimension='ROWS'
     ).execute()
     #Проверяет полученный ответ от google, если нужного ключа нету
-    #вставляет пустой список
-    answer = values.get('values', [])
-    return answer
+    #отправляет None
+    return values.get('values')
