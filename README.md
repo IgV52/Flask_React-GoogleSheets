@@ -61,6 +61,4 @@ docker-compose up --build
 
 ### <br><b>Пример</b>
 
-<br>[Пример: 188.93.210.155:5000](http://188.93.210.155:5000/)
-
 <br>[![imageup.ru](https://imageup.ru/img255/3945120/google_table.png)](https://imageup.ru/img255/3945120/google_table.png.html)
