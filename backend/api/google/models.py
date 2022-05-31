@@ -15,13 +15,13 @@ class AnswerTable:
         self.answer_null = [['№', 'заказ №', 'стоимость,$', 'срок поставки'], ['0', '0', '0', '0']] 
 
     def course_date(self):
-        price_usd = self.daily.get_by_id(self.id_code).value
-        course_info = date_and_course(self.date, price_usd)
-        return course_info
+        self.price_usd = self.daily.get_by_id(self.id_code).value
+        self.course_info = date_and_course(self.date, self.price_usd)
+        return self.course_info
 
     def new_table(self, table: list, course_usd: dict):
-        new_table = convert_money(table, course_usd)
-        return new_table
+        self.new_table = convert_money(table, course_usd)
+        return self.new_table
 
     def __repr__(self):
         return f"{self.answer_null}" 
